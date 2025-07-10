@@ -84,7 +84,9 @@ impl Signature {
     #[inline]
     pub fn recover_address_from_prehash(&self, prehash: &B256) -> Result<Address, SignatureError> {
         let signature: AlloySignature = self.inner.into();
-        signature.recover_address_from_prehash(prehash)
+        signature
+            .recover_address_from_prehash(prehash)
+            .map(|x| x.into())
     }
 
     #[inline]
