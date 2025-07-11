@@ -207,8 +207,8 @@ impl MerkleProof {
 )]
 #[cfg_attr(feature = "testutils", derive(arbitrary::Arbitrary))]
 pub enum Claim {
-    Mainnet(Box<ClaimFromMainnet>),
-    Rollup(Box<ClaimFromRollup>),
+    Mainnet(ClaimFromMainnet),
+    Rollup(ClaimFromRollup),
 }
 
 #[derive(

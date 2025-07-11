@@ -59,18 +59,16 @@ impl TryFrom<v1::imported_bridge_exit::Claim> for Claim {
     #[inline]
     fn try_from(value: v1::imported_bridge_exit::Claim) -> Result<Self, Self::Error> {
         Ok(match value {
-            v1::imported_bridge_exit::Claim::Mainnet(claim_from_mainnet) => {
-                Claim::Mainnet(Box::new(
-                    claim_from_mainnet
-                        .try_into()
-                        .map_err(|e: Error| e.inside_field("claim_from_mainnet"))?,
-                ))
-            }
-            v1::imported_bridge_exit::Claim::Rollup(claim_from_rollup) => Claim::Rollup(Box::new(
+            v1::imported_bridge_exit::Claim::Mainnet(claim_from_mainnet) => Claim::Mainnet(
+                claim_from_mainnet
+                    .try_into()
+                    .map_err(|e: Error| e.inside_field("claim_from_mainnet"))?,
+            ),
+            v1::imported_bridge_exit::Claim::Rollup(claim_from_rollup) => Claim::Rollup(
                 claim_from_rollup
                     .try_into()
                     .map_err(|e: Error| e.inside_field("claim_from_rollup"))?,
-            )),
+            ),
         })
     }
 }
@@ -80,10 +78,10 @@ impl From<Claim> for v1::imported_bridge_exit::Claim {
     fn from(value: Claim) -> Self {
         match value {
             Claim::Mainnet(claim_from_mainnet) => {
-                v1::imported_bridge_exit::Claim::Mainnet((*claim_from_mainnet).into())
+                v1::imported_bridge_exit::Claim::Mainnet(claim_from_mainnet.into())
             }
             Claim::Rollup(claim_from_rollup) => {
-                v1::imported_bridge_exit::Claim::Rollup((*claim_from_rollup).into())
+                v1::imported_bridge_exit::Claim::Rollup(claim_from_rollup.into())
             }
         }
     }

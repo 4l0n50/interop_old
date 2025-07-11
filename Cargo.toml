@@ -31,6 +31,13 @@ sp1-primitives = "=5.0.0"
 sp1-prover = "=5.0.1"
 sp1-zkvm = { version = "=5.0.0", default-features = false }
 
+# sp1-build = { path = "../sp1/crates/build" }
+# sp1-core-machine = { path = "../sp1/crates/core/machine" }
+# sp1-sdk = { path = "../sp1/crates/sdk" }
+# sp1-primitives = { path = "../sp1/crates/primitives" }
+# sp1-prover = { path = "../sp1/crates/prover" }
+# sp1-zkvm = { path = "../sp1/crates/zkvm/entrypoint", default-features = false }
+
 alloy = { version = "0.14.0", features = ["full"] }
 alloy-primitives = { version = "1.2", features = ["serde", "k256"] }
 anyhow = "1.0"
@@ -71,7 +78,12 @@ pbjson = "0.7.0"
 pin-project = "1.1"
 prost = "0.13.4"
 rand = "0.9.0"
-rkyv = { version = "0.8", features = ["hashbrown-0_15", "std", "bytecheck"] }
+rkyv = { version = "0.8", features = [
+    "hashbrown-0_15",
+    "std",
+    "bytecheck",
+    "unaligned",
+] }
 rs_merkle = { version = "1.4", default-features = false }
 rstest = "0.25.0"
 serde = { version = "1.0", features = ["derive"] }

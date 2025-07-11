@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// 0 refers to ethereum, and rollups are numbered from 1 to `u32::MAX`.
 #[derive(
+    Default,
     Debug,
     Clone,
     Copy,
